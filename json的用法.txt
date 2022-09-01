@@ -1,0 +1,19 @@
+JSON语法规则
+数据在名称/值对中
+大括号{}保存对象
+中括号[]保存数组，数组可以包含多个对象
+
+
+JSON名称/值对
+key:value
+"name"："rubby"
+
+JSON值
+数字
+字符串(在双引号中)
+逻辑值(true或false)
+数组(在中括号中) [{ key1 : value1-1 , key2:value1-2 }, { key1 : value2-1 , key2:value2-2 },...]
+对象(在大括号中) {key1:value1,key2:value2...}
+null
+
+{key1:value1,key2:value2,key3:value3,....}
