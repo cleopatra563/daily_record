@@ -110,3 +110,22 @@ s.reset_index().values.tolist()
 .rename() {original name:new name}
 df_new = df.rename(columns={"A":"Col_1"},index={"ONE":"Row_1"})
 df.rename(columns = {"A":"Col_1","C":"Col_3"})
+df.dtypes ## dtype: object
+type(df) ## <class 'pandas.core.frame.DataFrame'>
+
+s = pd.Series([0, 1, 2], dtype=np.float64)
+s.dtype ## dtype('float64')
+type(s) ## <class 'pandas.core.series.Series'>
+
+# Convert ndarray to DataFrame, Series
+import numpy as np
+a = np.arange(4)
+s = pd.Series(a)
+
+a = np.arange(12).reshape((4,3))
+df = pd.DataFrame(a)
+
+df_f = pd.DataFrame([[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]])
+a_df_f = df_f.values
+type(a_df_f) # <class 'numpy.ndarray'>
+a_df_f.dtype # float64
