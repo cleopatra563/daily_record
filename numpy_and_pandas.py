@@ -129,3 +129,8 @@ df_f = pd.DataFrame([[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]])
 a_df_f = df_f.values
 type(a_df_f) # <class 'numpy.ndarray'>
 a_df_f.dtype # float64
+
+## pandas 0.24.0 or later
+to_numpy()
+df = pd.DataFrame(data=[[1, 2, 3], [4, 5, 6]], columns=['a', 'b', 'c'])
+df.to_numpy()
