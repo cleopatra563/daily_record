@@ -107,7 +107,7 @@ s = pd.Series(l_1d,index=['row1','row2','row3'])
 s.reset_index().values.tolist()
 
 # Rename column/index name
-.rename() {original name:new name}
+rename() {original name:new name}
 df_new = df.rename(columns={"A":"Col_1"},index={"ONE":"Row_1"})
 df.rename(columns = {"A":"Col_1","C":"Col_3"})
 df.dtypes ## dtype: object
