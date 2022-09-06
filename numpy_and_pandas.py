@@ -133,4 +133,4 @@ a_df_f.dtype # float64
 ## pandas 0.24.0 or later
 to_numpy()
 df = pd.DataFrame(data=[[1, 2, 3], [4, 5, 6]], columns=['a', 'b', 'c'])
-df.to_numpy()
+df.to_numpy() # equal to df.values,official recommends using to_numpy() method
