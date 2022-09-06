@@ -134,3 +134,53 @@ a_df_f.dtype # float64
 to_numpy()
 df = pd.DataFrame(data=[[1, 2, 3], [4, 5, 6]], columns=['a', 'b', 'c'])
 df.to_numpy() # equal to df.values,official recommends using to_numpy() method
+
+#List type method sort() sorts the original list
+org_list = [3,1,4,5,2]
+org_list.sort()
+print(org_list)
+# [1,2,3,4,5]
+
+org_list.sort(reverse = True)
+print(org_list)
+# [5,4,3,2,1]
+
+# Built-in function sorted() returns a sorted list
+new_list = sorted(org_list)
+print(org_list)
+print(new_list)
+# [3, 1, 4, 5, 2]
+# [1, 2, 3, 4, 5]
+
+# Concatenate multiple strings: +, += operator
+s = "aaa"+"bbb"+"ccc"
+i = 100
+f = 0.25
+print(s)
+# aaabbbccc
+
+s = 'aaa'\
+    'bbb'\
+    'ccc'
+print(s)
+# aaabbbccc
+
+# Concatenate strings and numbers: format(), f-string
+s = f'{s}_{i:'05'}_{s2}_{f:.5f}'
+print(s)
+# aaa_00100_bbb_0.25000
+
+# Concatenate a list of strings into one string: join()
+'String to insert'.join([List of strings])
+l = ['aaa','bbb','ccc']
+s = ''.join(l)
+# aaabbbccc
+
+s = ','.join(l)
+print(s)
+# aaa,bbb,ccc
+
+# Separate a string by a specific delimiter and get it as a list: split()
+
+
+# List comprehensions
