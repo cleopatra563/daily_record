@@ -74,6 +74,7 @@ FROM
 
 /*列表转成对象组*/
 transfrom("latest_line_up",x->cast(json_parse(x) as row(ranger_id double,ranger_lv double)))
+虚拟属性编辑：依次选择 属性类型【对象组】、关联事件【自动识别】、属性赋值【无值】
 
 示例
 territory_list

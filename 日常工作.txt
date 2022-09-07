@@ -18,4 +18,4 @@ IQ分类：角色扮演-帝国模拟养成角色扮演
 
 周二
 1、新生：版本计划与优化内容体验
-2、Python代码整理np.array
+2、Python代码整理sorted() f-string join() split() 

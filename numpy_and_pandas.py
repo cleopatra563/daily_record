@@ -181,6 +181,32 @@ print(s)
 # aaa,bbb,ccc
 
 # Separate a string by a specific delimiter and get it as a list: split()
+s_blank = 'one two     three\nfour\tfive'
+print(s_blank)
+# one two     three
+# four  five
 
+print(s_blank.split())
+# ['one', 'two', 'three', 'four', 'five']
+
+print(type(s_blank.split()))
+# <class 'list'>
+
+import re
+re.split()
+s_marks = 'one-two+three#four'
+print(re.split('[-+#]', s_marks))
+# ['one', 'two', 'three', 'four']
+
+s_strs = 'oneXXXtwoYYYthreeZZZfour'
+print(re.split('XXX|YYY|ZZZ', s_strs))
+# ['one', 'two', 'three', 'four']
 
 # List comprehensions
+[expression for variable_name in iterable]
+[expression for variable_name in iterable if condition]
+
+X if condition else Y
+X is value or expression for True, and Y is value or expression for False
+
+# String comprehensions
