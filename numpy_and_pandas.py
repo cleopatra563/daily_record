@@ -205,8 +205,45 @@ print(re.split('XXX|YYY|ZZZ', s_strs))
 # List comprehensions
 [expression for variable_name in iterable]
 [expression for variable_name in iterable if condition]
+X if condition else Y X is value or expression for True, and Y is value or expression for False
+odds = [i for i in range(10) if i%2 == 1]
 
-X if condition else Y
-X is value or expression for True, and Y is value or expression for False
+# Dictionary comprehensions
+l = ['Alice', 'Bob', 'Charlie']
+d = {s:len(s) for s in l}
+d = {s:m for s,m in enumerate(l)}
 
-# String comprehensions
+keys = ['k1','k2','k3']
+values = [1,2,3]
+d = {k:v for k,v in zip(keys,values)}
+
+# Set comprehensions
+s = {i**2 for i in range(5)}
+print(s)
+#{0,1,4,9,16}
+
+# Generator expression
+g = (i**2 for i in range(5))
+print(g)
+# <generator object <genexpr> at 0x10af944f8>
+print(type(g))
+# <class 'generator'>
+
+for i in g:
+    print(i)
+# 0
+# 1
+# 4
+# 9
+# 16
+
+# String comparison
+print('bbb' in 'aaa-bbb-ccc')
+# True
+
+print('xxx' in 'aaa-bbb-ccc')
+# False
+
+s = 'aaa-bbb-ccc'
+print(re.search('^aaa', s))
+# <re.Match object; span=(0, 3), match='aaa'>
