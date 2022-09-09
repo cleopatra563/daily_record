@@ -25,8 +25,11 @@ and phone_model = 'Google Pixel 4 XL'
 周三
 1、Steam游戏体验、海外在榜产品整理
 2、新生：将时区偏移与服务器时间修改至美国时区与时间
-3、格里芬：新手引导流程检查
-4、Python代码整理 list&dict&set comprehensions
+3、Python代码整理 list&dict&set comprehensions
 
 周四
-1、格里芬：数数日志格式与字段计算正确性
+1、格里芬：数数日志格式与字段计算正确性、看版配置
+2、格里芬：新手引导流程检查
+
+周五
+1、格里芬：本次在线时长计算是否准确
