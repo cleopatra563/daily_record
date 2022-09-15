@@ -14,7 +14,6 @@ role_id   性别
 10100001  male
 10100002  female
 
-
 /*文本格式转时间格式*/
 国内时间：FROM_UNIXTIME(cast("create_time" as double)/1000)
 日本时间：date_add('hour', 1, FROM_UNIXTIME(cast("create_time" as double)/1000))
