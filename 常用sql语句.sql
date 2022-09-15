@@ -2,6 +2,9 @@
 select role_id,case when sex = 0 then 'male' else 'female' end as "性别"
 from (select distinct role_id,sex from table where "$part_event" in ('role') and "$part_date">='2022-8-15' )
 
+select role_id,case when sex = '1' then '男' else '女' end as "性别"
+from(select distinct role_id,sex from ta.v_event_49 where "$part_event" = 'create_role' and "$part_date">='2022-09-14')
+
 now we have:
 date sample
 role_id   sex
@@ -20,8 +23,7 @@ role_id   性别
 美国时间：date_add('hour',-12,"#event_time")
 动态参数：date_add('hour',${Variable},"#event_time")
 创角天数：date_diff('day',date(create_time),date("#event_time"))
-时区修改：IF("#event_time" is not null,-4)
-
+时区修改：IF("#event_time" is not null,-4) or replace("time_zone",'UTC','')
 "time" = date('2022-8-15')
 
 
