@@ -254,3 +254,6 @@ def nearest_value(values,one):
             return i+1
 
 min((abs(n-one),n) for n in values)
+
+a = "abcde"
+a[:2]
