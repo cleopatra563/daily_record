@@ -23,7 +23,7 @@ role_id   性别
 美国时间：date_add('hour',-12,"#event_time")
 动态参数：date_add('hour',${Variable},"#event_time")
 创角天数：date_diff('day',date(create_time),date("#event_time"))
-时区修改：IF("#event_time" is not null,-4) or replace("time_zone",'UTC','')
+时区偏移：IF("#event_time" is not null,-4) or replace("time_zone",'UTC','')
 "time" = date('2022-8-15')
 
 

@@ -255,5 +255,16 @@ def nearest_value(values,one):
 
 min((abs(n-one),n) for n in values)
 
-a = "abcde"
-a[:2]
+## example  function or expression may nedded
+str.capitalize() str[0].upper() +str[1:]
+str.endswith('.')
+str += '.'
+text[0].upper() + text[1:] + ("." if text[-1]!= "." else ".")
+
+## example
+def checkio(data):
+    ls = []
+    for item in data:
+        if data.count(item)>1:
+            ls.append(item)
+    return ls

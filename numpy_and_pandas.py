@@ -247,3 +247,5 @@ print('xxx' in 'aaa-bbb-ccc')
 s = 'aaa-bbb-ccc'
 print(re.search('^aaa', s))
 # <re.Match object; span=(0, 3), match='aaa'>
+
+# for even numbers (num % 2) will return 0, which in boolean logic means False.
