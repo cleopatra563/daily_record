@@ -249,3 +249,43 @@ print(re.search('^aaa', s))
 # <re.Match object; span=(0, 3), match='aaa'>
 
 # for even numbers (num % 2) will return 0, which in boolean logic means False.
+
+# tuple and List
+tuple is immutable(不可变)
+
+## tuple占用内存小
+this_is_tuple = ('a','b','c')
+this_is_tuple.__sizeof__()
+48
+
+this_is_list = ['a','b','c']
+this_is_list.__sizeof__()
+64
+
+列表是动态的，需要储存指针，同时需要额外储存已经分配的长度大小，都会占用空间
+ls.append() ls.remove() ls.pop()
+
+## tuple使用场景
+1、作为函数使用容器
+def get_location():
+    ...
+    return (lon,lat)
+
+2、作为字典的键
+3、打包解包
+打包是把一堆元素放到容器中，解包是把容器里的元素分别赋值给变量
+## 打包
+t = ('foo','bar','baz','qux')
+t[0]  t[-1]
+'foo'  'qux'
+
+## 解包
+(s1,s2,s3,s4) = t
+s1     s2
+'foo'  'bar'
+
+## tuple常用方法
+len(tuple)
+max(tuple)
+min(tuple)
+tuple(seq) #将列表转化为元组
