@@ -262,9 +262,43 @@ str += '.'
 text[0].upper() + text[1:] + ("." if text[-1]!= "." else ".")
 
 ## example
+### first method
 def checkio(data):
     ls = []
     for item in data:
         if data.count(item)>1:
             ls.append(item)
     return ls
+
+
+### second method
+def checkio(data):
+    return [item for item in data if bool(data.count(item)-1)]
+
+### third method
+from collections import Counter
+def checkio(data):
+    count = Counter(data)
+    return [n for n in data if count[n]>1]
+
+if __name__ == "__main__":
+    print("Example:")
+    print(checkio(data))
+    print("write down whatever you wanna say")
+
+# teach the Robots to distinguish words and numbers
+words = 'Hello World hello'
+wr = words.split()
+# ['Hello', 'World', 'hello']
+
+def checkio(words:str)->bool:
+    count = 0
+    wr = words.split()
+    for w in wr:
+        if w.isalpha():
+            count += 1
+            if count == 3:
+                return True
+        else:
+            count = 0
+    return False
