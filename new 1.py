@@ -302,3 +302,9 @@ def checkio(words:str)->bool:
         else:
             count = 0
     return False
+
+import re
+def checkio(words):
+    return bool(re.search("\D+\s\D+\s\D+",words))
+
+    
