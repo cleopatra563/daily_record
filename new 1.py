@@ -287,14 +287,16 @@ if __name__ == "__main__":
     print("write down whatever you wanna say")
 
 # teach the Robots to distinguish words and numbers
+1、输入变量是字符串
+2、识别出变量里的字符串
+3、将这些字符串相加
 words = 'Hello World hello'
 wr = words.split()
 # ['Hello', 'World', 'hello']
 
 def checkio(words:str)->bool:
     count = 0
-    wr = words.split()
-    for w in wr:
+    for w in words.split():
         if w.isalpha():
             count += 1
             if count == 3:
@@ -303,8 +305,42 @@ def checkio(words:str)->bool:
             count = 0
     return False
 
+def checkio(words):
+    succ = 0
+    for word in words.split():
+        succ = (succ+1)*word.isalpha() #Boolean can be treated as integer(true = 1,false = 0)
+        if succ == 3:return True
+    else: return False #else statements can be used with for loops
+
 import re
 def checkio(words):
     return bool(re.search("\D+\s\D+\s\D+",words))
 
-    
+# sum the numbers,text contains of numbers,spaces and letters from the English alphabet
+1、输入变量是字符串
+2、识别出变量里的数字
+3、将这些数据相加
+
+def sum_numbers(text):
+    sum = 0
+    for t in text.split():
+        if t.isdigit():
+            sum = sum + int(t)
+    return sum
+
+
+count = 0
+for word in words.split():
+    if word.isalpha():
+        count += 1
+        if count == 3:return True
+else : return False
+
+## powerful funcitons:map() filter() reduce()
+take a function and a lis of elements,and then applying the func to element
+
+syntax:map(function,iterables)
+example:map(int,filter(str.isdigit(),text.split())
+
+def sum_numbers(text):
+    return sum(map(int,filter(str.isdigit,text.split())))
