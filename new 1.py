@@ -321,6 +321,7 @@ def checkio(words):
 2、识别出变量里的数字
 3、将这些数据相加
 
+### method1
 def sum_numbers(text):
     sum = 0
     for t in text.split():
@@ -336,11 +337,33 @@ for word in words.split():
         if count == 3:return True
 else : return False
 
+### method2
+sum_numbers = labmda t,r= __import__('re').compile(r''):sum(map(int,r.findall(t)))
+
+### method3
+def sum_numbers(text):
+    return sum(map(int,filter(str.isdigit,text.split())))
+
 ## powerful funcitons:map() filter() reduce()
 take a function and a lis of elements,and then applying the func to element
-
 syntax:map(function,iterables)
 example:map(int,filter(str.isdigit(),text.split())
 
-def sum_numbers(text):
-    return sum(map(int,filter(str.isdigit,text.split())))
+syntax:filter(function,iterables)
+The filter() function is used to generate an output list of values
+
+# even the last,indexes and slices are important elements of coding
+1、选出第奇数项对应的数值
+2、将这些数值相加，并与最后一个元素相乘
+
+def checkio(array):
+    if len(array) != 0:
+        ls = [array[i] for i in range(0,len(array),2)]
+        last = array[-1]
+        return sum(ls)*last
+    else:
+        return 0
+
+
+def checkio(array):
+    try:
