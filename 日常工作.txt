@@ -10,9 +10,10 @@ and phone_model = 'Google Pixel 4 XL'
 
 本周工作
 1、格里芬：导量数据跟进、数据报告（FB粉丝页被封，暂未投放）
-2、产品调研：美国&中国苹果榜TOP产品(肉鸽+，模拟生存，3D卡牌)
-3、数据异常问题整理(虚拟属性提取ip中的地域信息)，了解数数API调用方式
-4、Github、Pandas、Python编程练习
+2、新生：DNS切换后，最新服日志验收
+3、产品调研：美国&中国苹果榜TOP产品(主关注肉鸽+，模拟生存，3D卡牌)
+4、数据异常问题整理(虚拟属性提取ip中的地域信息)，了解数数API调用方式
+5、Github、Pandas、Python编程练习
 
 周一~周二
 1、中国苹果榜单、美国苹果榜单
@@ -28,4 +29,6 @@ and phone_model = 'Google Pixel 4 XL'
 2、数数后台了解API调用相关用法
 
 周五
-1、完成个人周报
+1、Check.IO练习题Even the last
+2、STEAM上模拟经营游戏
+3、完成个人周报

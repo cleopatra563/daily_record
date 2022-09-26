@@ -1,9 +1,6 @@
 /*性别sql标签*/
-select role_id,case when sex = 0 then 'male' else 'female' end as "性别"
-from (select distinct role_id,sex from table where "$part_event" in ('role') and "$part_date">='2022-8-15' )
-
 select role_id,case when sex = '1' then '男' else '女' end as "性别"
-from(select distinct role_id,sex from ta.v_event_49 where "$part_event" = 'create_role' and "$part_date">='2022-09-14')
+from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('create_role') and "$part_date">='2022-09-14')
 
 now we have:
 date sample
