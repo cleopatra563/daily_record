@@ -46,6 +46,8 @@ concat(cast(round(count(case when this_time/60 >= 30 and this_time/60<60 THEN ro
 concat(cast(round(count(case when this_time/60 >= 60 and this_time/60<120 THEN role_id end)/cast(count(e.role_id)as double)*100,2) as varchar),'%') as "60~120min",
 concat(cast(round(count(case when this_time/60 >= 120  THEN role_id end)/cast(count(e.role_id)as double)*100,2) as varchar),'%')  as "120+min"
 
+concat(cast(cast(cast(count(distinct role_id) as double)/${Variable}*100 as decimal(20,2)) as varchar),'%')
+
 /*分层留存*/
 with x as (SELECT a.*,b."tag_value" FROM
     (SELECT distinct "$part_date","#user_id","#account_id","server_id"
@@ -92,3 +94,10 @@ FROM v_event_49 WHERE "$part_event"='logout' AND "$part_date"<='2022-08-14'
 
 SELECT "#user_id","local_time","local_time_zone","time","time_zone"
 FROM v_event_49 WHERE "$part_event"='logout' AND "time"<=date('2022-08-14')
+
+ /*数数两表链接*/
+ SELECT a."role_id",b."role_id",b."block_id" FROM
+ (SELECT role_id FROM ta.v_event_56 WHERE "$part_event" = 'logout' and ${PartDate:date1}) a
+ right join
+ (SELECT role_id,block_id FROM ta.v_event_56 WHERE "$part_event" = 'block_task' and ${PartDate:date1}) b
+ ON a."role_id" = b."role_id"
