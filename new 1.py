@@ -364,7 +364,6 @@ def checkio(array):
     else:
         return 0
 
-
 def checkio(array):
     try:
         return array[-1]*sum(array[::2]) #slicing instead of list comprehension
