@@ -72,6 +72,11 @@ FROM
  )
    group by "注册日期","tag_value"
 
+    case when round(add_time/60) <= 5 then '5分钟以内'
+         when round(add_time/60)>5 and round(add_time/60)<= 10 then '5-10分钟'
+         when round(add_time/60)>10 and round(add_time/60)<= 20 then '11-20分钟'
+         when round(add_time/60)>20 and round(add_time/60)<= 30 then '21-30分钟'
+         else '30分钟以上' end as "在线时长分布"
 
 /*列表转成对象组*/
 transfrom("latest_line_up",x->cast(json_parse(x) as row(ranger_id double,ranger_lv double)))
