@@ -369,3 +369,20 @@ def checkio(array):
         return array[-1]*sum(array[::2]) #slicing instead of list comprehension
     except IndexError:
         return 0
+
+# right to left,repalce all cases of the words "right" with word "left"
+1、convert tuple into string,join the string
+2、string replace function
+
+def left_join(phrases):
+    str = ",".join(phrases)
+    return str.replace("right","left")
+
+#given a string where you have to find
+1、replace dots and commas with white spaces
+2、convert string into list
+3、list slicing first word
+
+def first_word(text):
+    text = text.replace(","," ").replace("."," ")
+    return text.split()[0]
