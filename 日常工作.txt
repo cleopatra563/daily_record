@@ -11,7 +11,12 @@ and phone_model = 'Google Pixel 4 XL'
 1、产品调研：榜单产品特征收集
 2、数据异常：日常数数后台数据问题整理
 3、测试项目：数据修正，看板配置，报表编写，新包数据验收
-4、Github、Pandas、Python编程练习
+4、编程练习：Github、Pandas、Python、SQL
+5、读书笔记：大师谈游戏创意读书笔记
 
 周六
 1、大师谈游戏创意读书笔记-BOOK
+2、新生、格里芬的日志验收
+
+周日
+1、格里芬：landing登录步骤编写
