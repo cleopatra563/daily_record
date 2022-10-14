@@ -18,11 +18,11 @@ SELECT
 from (select )
 
 /*文本格式转时间格式*/
-国内时间：FROM_UNIXTIME(cast("create_time" as double)/1000)
-日本时间：date_add('hour', 1, FROM_UNIXTIME(cast("create_time" as double)/1000))
+国内时间：from_unixtime(cast("create_time" as double)/1000)
+日本时间：date_add('hour', 1, from_unixtime(cast("create_time" as double)/1000))
 美国时间：date_add('hour',-12,"#event_time")
 动态参数：date_add('hour',${Variable},"#event_time")
-创角天数：date_diff('day',date(create_time),date("#event_time"))
+创角天数：date_diff('day',date(create_time),date("#event_time"))+1
 时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
 "time" = date('2022-8-15')
 
