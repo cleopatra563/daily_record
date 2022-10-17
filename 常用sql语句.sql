@@ -1,6 +1,8 @@
 /*性别sql标签*/
 select role_id,case when sex = '1' then '男' else '女' end as "性别"
-from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('create_role') and "$part_date">='2022-09-14')
+from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('role') and "$part_date">='2022-09-14')
+
+分析主体选：role_id
 
 now we have:
 date sample
@@ -24,6 +26,7 @@ from (select )
 动态参数：date_add('hour',${Variable},"#event_time")
 创角天数：date_diff('day',date(create_time),date("#event_time"))+1
 时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
+日期偏移：date(date_add('hour',-13 ,"#event_time")) "new_date"
 "time" = date('2022-8-15')
 
 
