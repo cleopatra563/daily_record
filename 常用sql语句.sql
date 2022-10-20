@@ -22,13 +22,12 @@ from (select )
 /*文本格式转时间格式*/
 国内时间：from_unixtime(cast("create_time" as double)/1000)
 日本时间：date_add('hour', 1, from_unixtime(cast("create_time" as double)/1000))
-美国时间：date_add('hour',-12,"#event_time")
+美国时间：date_add('hour',-13,"#event_time")
 动态参数：date_add('hour',${Variable},"#event_time")
 创角天数：date_diff('day',date(create_time),date("#event_time"))+1
 时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
-日期偏移：date(date_add('hour',-13 ,"#event_time")) "new_date"
+日期偏移：date(date_add('hour',-13 ,"#event_time")) "part_date"
 "time" = date('2022-8-15')
-
 
 /*筛选掉内部用户*/
 "#user_id" not in (SELECT "#user_id" FROM user_result_cluster_52 WHERE "cluster_name"='inuser')
