@@ -29,17 +29,21 @@ from (select )
 日期偏移：date(date_add('hour',-13 ,"#event_time")) "part_date"
 "time" = date('2022-8-15')
 
+/*国家信息获取*/
+港台：case when get_ip_location("ip")[2] = '中国' then get_ip_location("ip")[3] else get_ip_location("ip")[2] end
+
 /*筛选掉内部用户*/
-"#user_id" not in (SELECT "#user_id" FROM user_result_cluster_52 WHERE "cluster_name"='inuser')
+"#user_id" not in (select "#user_id" from user_result_cluster_52 where)
 
 /*判断首次退出时间*/
-row_number() over (partition BY role_id ORDER BY time asc) as row_num
+row_number() over (partition by role_id order by time asc) as row_num
 where e.row_num = 1
 
 /*汇总行写法*/
 select coalesce(server_id,'汇总行') as "server_id"
 group by grouping sets(server_id,())
 order by case when server_id='汇总行' then '0' else server_id end
+ 
 
 /*百分比写法*/
 concat(cast(round(count(case when this_time/60<1 then role_id end)/cast(count(e.role_id) as double)*100,2) as varchar),'%') as "0~1min",
