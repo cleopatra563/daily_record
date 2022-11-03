@@ -22,8 +22,7 @@ from (select )
 /*文本格式转时间格式*/
 国内时间：from_unixtime(cast("create_time" as double)/1000)
 日本时间：date_add('hour', 1, from_unixtime(cast("create_time" as double)/1000))
-美国时间：date_add('hour',-13,"#event_time")
-动态参数：date_add('hour',${Variable},"#event_time")
+美国时间：date_add('hour',-13,"#event_time"),date(date_add('hour',-13,from_unixtime(cast(create_time as bigint)/1000 ))) create_date,date(date_add('hour',-13,"#event_time")) as part_date
 创角天数：date_diff('day',date(create_time),date("#event_time"))+1
 时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
 日期偏移：date(date_add('hour',-13 ,"#event_time")) "part_date"
@@ -43,7 +42,7 @@ where e.row_num = 1
 select coalesce(server_id,'汇总行') as "server_id"
 group by grouping sets(server_id,())
 order by case when server_id='汇总行' then '0' else server_id end
- 
+
 
 /*百分比写法*/
 concat(cast(round(count(case when this_time/60<1 then role_id end)/cast(count(e.role_id) as double)*100,2) as varchar),'%') as "0~1min",
