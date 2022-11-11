@@ -14,7 +14,6 @@
 5、读书笔记：大师谈游戏创意读书笔记
 
 大东家英文：每日活跃分布sql修改
-https://wiki.biligame.com/wiki/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93
 
 周一~周二
 1、整理不同类型游戏指标设定（持续整理）
@@ -27,5 +26,5 @@ https://wiki.biligame.com/wiki/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93
 3、新生任务流失数据分析
 
 周五
-1、榜单爬取代码修改
+1、榜单爬取代码修改（配置python2 python3 pycharm 环境）
 2、个人周报
