@@ -35,7 +35,8 @@ from (select )
 "#user_id" not in (select "#user_id" from user_result_cluster_52 where)
 
 /*判断首次退出时间*/
-row_number() over (partition by role_id order by time asc) as row_num
+select e.row_num
+from( select  row_number() over(partition by role_id order by time asc) as row_num ) as e
 where e.row_num = 1
 
 /*汇总行写法*/
