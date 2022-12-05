@@ -115,3 +115,16 @@ FROM v_event_49 WHERE "$part_event"='logout' AND "time"<=date('2022-08-14')
  right join
  (SELECT role_id,block_id FROM ta.v_event_56 WHERE "$part_event" = 'block_task' and ${PartDate:date1}) b
  ON a."role_id" = b."role_id"
+
+/*错位自连接*/
+with a as(
+select openid,role_id,block_id,time,row_number() over(partition by role_id order by time asc) as rownum
+from ta.v_event_56
+where "$part_event" = 'block_task' and ${PartDate:date})
+
+select b.openid,b.role_id,b.block_id,b.time as time,a.time as time2
+from
+(select openid,role_id,block_id,time,row_number() over(partition by role_id order by time asc) as rownum
+from ta.v_event_56
+where "$part_event" = 'block_task' and ${PartDate:date} and role_id = '200300000000570')b
+left join a on b.rownum = a.rownum-1 and b.role_id = a.role_id
