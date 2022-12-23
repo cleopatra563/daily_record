@@ -16,9 +16,6 @@ role_id   性别
 10100001  male
 10100002  female
 
-SELECT
-from (select )
-
 /*文本格式转时间格式*/
 国内时间：from_unixtime(cast("create_time" as double)/1000)
 日本时间：date_add('hour', 1, from_unixtime(cast("create_time" as double)/1000))
@@ -32,7 +29,9 @@ from (select )
 港台：case when get_ip_location("ip")[2] = '中国' then get_ip_location("ip")[3] else get_ip_location("ip")[2] end
 
 /*筛选掉内部用户*/
-"#user_id" not in (select "#user_id" from user_result_cluster_52 where)
+where "$part_event" in ('login')
+and "#user_id" not in (select "#user_id" from user_result_cluster_32 where "cluster_name" = 'neibu')
+
 
 /*判断首次退出时间*/
 select e.row_num
@@ -40,7 +39,9 @@ from( select  row_number() over(partition by role_id order by time asc) as row_n
 where e.row_num = 1
 
 /*汇总行写法*/
-select coalesce(server_id,'汇总行') as "server_id"
+select coalesce(server_id,'汇总行') as "server_id",count(e.role_id) as "总人数"
+from (select server_id,role_id,row_number() over(partition by role_id order by time) from xx) e
+where e.num = 1
 group by grouping sets(server_id,())
 order by case when server_id='汇总行' then '0' else server_id end
 
