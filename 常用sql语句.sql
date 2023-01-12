@@ -27,6 +27,7 @@ role_id   性别
 
 /*国家信息获取*/
 港台：case when get_ip_location("ip")[2] = '中国' then get_ip_location("ip")[3] else get_ip_location("ip")[2] end
+ip v4转v6：select get_ip_location(replace("ip",'::ffff:',''))[3]
 
 /*筛选掉内部用户*/
 where "$part_event" in ('login')
