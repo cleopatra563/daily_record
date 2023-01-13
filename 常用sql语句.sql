@@ -27,12 +27,11 @@ role_id   性别
 
 /*国家信息获取*/
 港台：case when get_ip_location("ip")[2] = '中国' then get_ip_location("ip")[3] else get_ip_location("ip")[2] end
-ip v4转v6：select get_ip_location(replace("ip",'::ffff:',''))[3]
+ip v4转v6：select get_ip_location(replace("ip",'::ffff:',''))[3] as "省份"
 
 /*筛选掉内部用户*/
 where "$part_event" in ('login')
 and "#user_id" not in (select "#user_id" from user_result_cluster_32 where "cluster_name" = 'neibu')
-
 
 /*判断首次退出时间*/
 select e.row_num
@@ -45,7 +44,6 @@ from (select server_id,role_id,row_number() over(partition by role_id order by t
 where e.num = 1
 group by grouping sets(server_id,())
 order by case when server_id='汇总行' then '0' else server_id end
-
 
 /*百分比写法*/
 concat(cast(round(count(case when this_time/60<1 then role_id end)/cast(count(e.role_id) as double)*100,2) as varchar),'%') as "0~1min",
@@ -130,3 +128,11 @@ from
 from ta.v_event_56
 where "$part_event" = 'block_task' and ${PartDate:date} and role_id = '200300000000570')b
 left join a on b.rownum = a.rownum-1 and b.role_id = a.role_id
+
+/*链接维度表*/
+select e.create_date,e."openid@ad_name",count(e.role_id) as "总人数"
+from
+(select b.*,a."openid@ad_name" from b join ta_dim.dim_47_0_56834 a on b.openid = a."openid@openid") e
+where e.row_num = 1
+group by e.create_date,e."openid@ad_name"
+order by e.create_date,e."openid@ad_name" desc
