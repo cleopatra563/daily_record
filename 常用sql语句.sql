@@ -1,20 +1,11 @@
-/*性别sql标签*/
+/*实用小函数*/
+保留小数：round(13.555,2)
+截取前三位字符串：substring('name',1,3)
+模糊匹配：where role_level_name like "炼气%"
+
+/*性别sql标签*/ 分析主体选：role_id
 select role_id,case when sex = '1' then '男' else '女' end as "性别"
 from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('role') and "$part_date">='2022-09-14')
-
-分析主体选：role_id
-
-now we have:
-date sample
-role_id   sex
-10100001  0
-10100002  1
-
-what we want:
-table sample
-role_id   性别
-10100001  male
-10100002  female
 
 /*文本格式转时间格式*/
 国内时间：from_unixtime(cast("create_time" as double)/1000)
