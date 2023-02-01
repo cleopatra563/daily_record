@@ -7,14 +7,23 @@
 1、用户标签设置（用户完成 首次 角色创建时间 openid_keep）
 2、虚拟属性设置（ta_tag."openid_keep" = "#event_time"）
 
-本周工作：
-1、梦入云山：日志数据结构内容熟悉、熟悉游戏玩法和各类活动、基本资源名称和用途、单独玩家玩法事件分布
-3、市场调研：每周新品市场【买量、题材、框架、美术风格】
-4、代码修改：sql维度表链接主表
-
 大东家英文：每日活跃分布sql修改、商店购买材料破冰时长sql（首次购买时间-首次创角时间）
 梦入云山：了解下这类游戏的玩家游戏行为（看30天的内容量）
 重点关注：模拟经营+SLG方向、中轻度SLG、休闲游戏（包括但不限于点击放置类、消除玩法细分、轻度塔防，无脑点击爽感该如何放大）
 
-周一
-1、梦入云山：计算锁妖幻塔境界战斗回合数
+本周工作：
+1、梦入云山：日志数据结构内容熟悉、熟悉游戏玩法和各类活动、基本资源名称和用途、特殊玩家玩法事件分布、编写SQL报表
+2、二向箔：新增新手日志内容验收
+3、市场调研：了解每周新品市场【买量、题材、框架、美术风格】
+4、其他：数字电路基本结构、计算组成原理、关系代数与SQL语法，操作表达
+
+转换函数（不改变行数）
+聚合函数（改变行数）
+选择性聚合(使用过滤函数)
+窗口函数
+
+select status,avg(power_all) from table group by status
+select status,avg(case when status = '' then power_all) from table group by status
+select key,avg() filter(where status)
+select row_number() over(partition by order by)
+select count(role_id) filter(where interval_time>= 1 and interval_time<3)/(count(distinct role_id)*1.000)
