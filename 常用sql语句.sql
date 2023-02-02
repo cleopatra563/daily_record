@@ -2,7 +2,10 @@
 保留小数：round(13.555,2)
 截取字符串：substring('name',1,3)
 模糊匹配：where role_level_name like "炼气%"
-https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
+累计百分比：cume_dist() over(),percent_rank() over()
+输出序号：rank() over(),dense_rank() over(),row_number() over()
+类型转换：cast(cast(3964885446092852 as decimal(20,0)) as varchar)
+语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
 
 /*性别sql标签*/ 分析主体选：role_id
 select role_id,case when sex = '1' then '男' else '女' end as "性别"
@@ -29,6 +32,20 @@ and "#user_id" not in (select "#user_id" from user_result_cluster_32 where "clus
 select e.row_num
 from( select  row_number() over(partition by role_id order by time asc) as row_num ) as e
 where e.row_num = 1
+
+/*对象组类型提取子属性*/
+select *
+from (
+select "card_detail" ,
+    json_extract_scalar(str_json, '$.card_id') as "card_id",
+    json_extract_scalar(str_json, '$.card_star') as "card_star"
+from (
+select "card_detail",cast("card_detail" as array(json)) raw_data  --card_detail 对象组属性
+from ta.v_event_231
+where "$part_event" ='battle_start'
+and ${PartDate:date1}
+)
+CROSS JOIN unnest(raw_data) AS t(str_json) ) t
 
 /*汇总行写法*/
 select coalesce(server_id,'汇总行') as "server_id",count(e.role_id) as "总人数"

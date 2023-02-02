@@ -15,15 +15,8 @@
 1、梦入云山：日志数据结构内容熟悉、熟悉游戏玩法和各类活动、基本资源名称和用途、特殊玩家玩法事件分布、编写SQL报表
 2、二向箔：新增新手日志内容验收
 3、市场调研：了解每周新品市场【买量、题材、框架、美术风格】
-4、其他：数字电路基本结构、计算组成原理、关系代数与SQL语法，操作表达
+4、其他：数字电路基本结构、计算组成原理（B站课程）、关系代数与SQL语法，操作表达
 
-转换函数（不改变行数）
-聚合函数（改变行数）
-选择性聚合(使用过滤函数)
-窗口函数
-
-select status,avg(power_all) from table group by status
-select status,avg(case when status = '' then power_all) from table group by status
-select key,avg() filter(where status)
-select row_number() over(partition by order by)
-select count(role_id) filter(where interval_time>= 1 and interval_time<3)/(count(distinct role_id)*1.000)
+周五
+1、梦入云山：英雄热度榜参数调试，代码修改
+2、其他：完成个人周报
