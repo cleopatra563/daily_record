@@ -33,20 +33,6 @@ select e.row_num
 from( select  row_number() over(partition by role_id order by time asc) as row_num ) as e
 where e.row_num = 1
 
-/*对象组类型提取子属性*/
-select *
-from (
-select "card_detail" ,
-    json_extract_scalar(str_json, '$.card_id') as "card_id",
-    json_extract_scalar(str_json, '$.card_star') as "card_star"
-from (
-select "card_detail",cast("card_detail" as array(json)) raw_data  --card_detail 对象组属性
-from ta.v_event_231
-where "$part_event" ='battle_start'
-and ${PartDate:date1}
-)
-CROSS JOIN unnest(raw_data) AS t(str_json) ) t
-
 /*汇总行写法*/
 select coalesce(server_id,'汇总行') as "server_id",count(e.role_id) as "总人数"
 from (select server_id,role_id,row_number() over(partition by role_id order by time) from xx) e
@@ -95,6 +81,20 @@ FROM
          when round(add_time/60)>10 and round(add_time/60)<= 20 then '11-20分钟'
          when round(add_time/60)>20 and round(add_time/60)<= 30 then '21-30分钟'
          else '30分钟以上' end as "在线时长分布"
+
+/*对象组类型提取子属性*/
+select *
+from (
+select "card_detail" ,
+    json_extract_scalar(str_json, '$.card_id') as "card_id",
+    json_extract_scalar(str_json, '$.card_star') as "card_star"
+from (
+select "card_detail",cast("card_detail" as array(json)) raw_data  --card_detail 对象组属性
+from ta.v_event_231
+where "$part_event" ='battle_start'
+and ${PartDate:date1}
+)
+CROSS JOIN unnest(raw_data) AS t(str_json) ) t
 
 /*列表转成对象组*/
 transfrom("latest_line_up",x->cast(json_parse(x) as row(ranger_id double,ranger_lv double)))
