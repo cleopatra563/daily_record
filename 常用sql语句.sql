@@ -51,6 +51,7 @@ concat(cast(round(count(case when this_time/60 >= 60 and this_time/60<120 THEN r
 concat(cast(round(count(case when this_time/60 >= 120  THEN role_id end)/cast(count(e.role_id)as double)*100,2) as varchar),'%')  as "120+min"
 
 concat(cast(cast(cast(count(distinct role_id) as double)/${Variable}*100 as decimal(20,2)) as varchar),'%')
+concat(cast(round((role_fightnum*100/role_num),2) as varchar),'%') as percent
 
 /*分层留存*/
 with x as (SELECT a.*,b."tag_value" FROM
