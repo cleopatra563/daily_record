@@ -33,6 +33,15 @@ select e.row_num
 from( select  row_number() over(partition by role_id order by time asc) as row_num ) as e
 where e.row_num = 1
 
+/*判断滚服*/
+select server_id
+,count(if(e.num>=2,sdk_uuid)) as "滚服充值设备数"
+,sum(if(e.num)>=2,pay,null) as "滚服充值金额"
+,sum(if(e.num)>=0,pay,null) as "总充值金额"
+from
+(select xx,row_number() over(partition by sdk_uuid order by create_time) as num) as e
+group by server_id
+
 /*汇总行写法*/
 select coalesce(server_id,'汇总行') as "server_id",count(e.role_id) as "总人数"
 from (select server_id,role_id,row_number() over(partition by role_id order by time) from xx) e
