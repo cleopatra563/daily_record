@@ -3,6 +3,7 @@
 截取字符串：substring('name',1,3)
 模糊匹配：where role_level_name like "炼气%"
 累计百分比：cume_dist() over(),percent_rank() over()
+两列相除：concat(cast(round((role_fightnum*100/role_num),2) as varchar),'%'
 输出序号：rank() over(),dense_rank() over(),row_number() over()
 类型转换：cast(cast(3964885446092852 as decimal(20,0)) as varchar)
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
@@ -16,6 +17,7 @@ from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('rol
 日本时间：date_add('hour', 1, from_unixtime(cast("create_time" as double)/1000))
 美国时间：date_add('hour',-13,"#event_time"),date(date_add('hour',-13,from_unixtime(cast(create_time as bigint)/1000 ))) create_date,date(date_add('hour',-13,"#event_time")) as part_date
 创角天数：date_diff('day',date(create_time),date("#event_time"))+1
+开服天数：date_diff('day',date("server_time"),date("#event_time"))+1
 时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
 日期偏移：date(date_add('hour',-13 ,"#event_time")) "part_date"
 "time" = date('2022-8-15')
