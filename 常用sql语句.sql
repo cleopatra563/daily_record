@@ -3,7 +3,7 @@
 截取字符串：substring('name',1,3)
 模糊匹配：where role_level_name like "炼气%"
 累计百分比：cume_dist() over(),percent_rank() over()
-两列相除：concat(cast(round((role_fightnum*100/role_num),2) as varchar),'%'
+两列相除：concat(cast(round((role_fightnum*100/role_num),2) as varchar),'%')
 输出序号：rank() over(),dense_rank() over(),row_number() over()
 类型转换：cast(cast(3964885446092852 as decimal(20,0)) as varchar)
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
