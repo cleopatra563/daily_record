@@ -8,6 +8,11 @@
 类型转换：cast(cast(3964885446092852 as decimal(20,0)) as varchar)
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
 
+/*账号&设备留存标签设置*/
+0、分析主体设置（账号&设备为主体）
+1、用户标签设置（用户完成 首次 角色创建时间 openid_keep，账号openid为主体，创建历史版本）
+2、虚拟属性设置（ta_tag."openid_keep" = "#event_time",布尔型）
+
 /*性别sql标签*/ 分析主体选：role_id
 select role_id,case when sex = '1' then '男' else '女' end as "性别"
 from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('role') and "$part_date">='2022-09-14')
