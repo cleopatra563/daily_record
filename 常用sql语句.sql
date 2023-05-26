@@ -7,6 +7,7 @@
 输出序号：rank() over(),dense_rank() over(),row_number() over()
 类型转换：cast(cast(3964885446092852 as decimal(20,0)) as varchar)
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
+分群筛选：where openid not in (select "#varchar_id" from cluster where cluster_name = '')
 
 /*账号&设备留存标签设置*/
 0、分析主体设置（账号&设备为主体）
@@ -17,6 +18,7 @@
 select role_id,case when sex = '1' then '男' else '女' end as "性别"
 from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('role') and "$part_date">='2022-09-14')
 
+
 /*文本格式转时间格式*/
 国内时间：from_unixtime(cast("create_time" as double)/1000)
 日本时间：date_add('hour', 1, from_unixtime(cast("create_time" as double)/1000))
@@ -26,7 +28,7 @@ from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('rol
 时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
 日期偏移：date(date_add('hour',-13 ,"#event_time")) "part_date"
 创角时间：from_unixtime(cast(create_time as bigint) /1000)
-"time" = date('2022-8-15')
+"time" = date('2022-8-15')   date_format("#event_time","%Y %M %d %H %m %s")
 
 /*国家信息获取*/
 港台：case when get_ip_location("ip")[2] = '中国' then get_ip_location("ip")[3] else get_ip_location("ip")[2] end
