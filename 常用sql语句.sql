@@ -9,6 +9,11 @@
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
 分群筛选：where openid not in (select "#varchar_id" from cluster where cluster_name = '')
 
+/*滚服账号识别*/
+1、设置首次创角时间标签
+2、添加虚拟属性
+case when date_diff('second',ta_tag."tag_20211130_9","#event_time")=0 THEN '首角色' else '滚服角色' end
+
 /*账号&设备留存标签设置*/
 0、分析主体设置（账号&设备为主体）
 1、用户标签设置（用户完成 首次 角色创建时间 openid_keep，账号openid为主体，创建历史版本）
