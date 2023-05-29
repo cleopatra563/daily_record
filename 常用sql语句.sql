@@ -28,7 +28,7 @@ from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('rol
 时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
 日期偏移：date(date_add('hour',-13 ,"#event_time")) "part_date"
 创角时间：from_unixtime(cast(create_time as bigint) /1000)
-"time" = date('2022-8-15')   date_format("#event_time","%Y %M %d %H %m %s")
+时间转化：cast('2020-11-15 10:30:00.000' as timestamp) date('2022-8-15')  date_format("#event_time","%Y %M %d %H %m %s")
 
 /*国家信息获取*/
 港台：case when get_ip_location("ip")[2] = '中国' then get_ip_location("ip")[3] else get_ip_location("ip")[2] end
