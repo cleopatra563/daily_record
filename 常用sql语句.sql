@@ -3,7 +3,7 @@
 截取字符串：substring('name',1,3)
 模糊匹配：where role_level_name like "炼气%"
 累计百分比：cume_dist() over(),percent_rank() over()
-两列相除：concat(cast(round((role_fightnum*100/role_num),2) as varchar),'%')
+两列相除：concat(cast(round((role_fightnum*100/role_num),2) as varchar),'%')；round(cast(pay as double)/id,0) "人均充值"
 输出序号：rank() over(),dense_rank() over(),row_number() over()
 类型转换：cast(cast(3964885446092852 as decimal(20,0)) as varchar)
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
@@ -122,8 +122,9 @@ and ${PartDate:date1}
 CROSS JOIN unnest(raw_data) AS t(str_json) ) t
 
 /*列表转成对象组*/
-transfrom("latest_line_up",x->cast(json_parse(x) as row(ranger_id double,ranger_lv double)))
+创建虚拟属性：transfrom("latest_line_up",x->cast(json_parse(x) as row(ranger_id double,ranger_lv double)))
 虚拟属性编辑：依次选择 属性类型【对象组】、关联事件【自动识别】、属性赋值【无值】
+transfrom("war_team",x->cast(json_parse(x) as row(id double,name varchar,level double,star double,power double )))
 
 示例
 territory_list
