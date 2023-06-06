@@ -122,9 +122,8 @@ and ${PartDate:date1}
 CROSS JOIN unnest(raw_data) AS t(str_json) ) t
 
 /*列表转成对象组*/
-创建虚拟属性：transfrom("latest_line_up",x->cast(json_parse(x) as row(ranger_id double,ranger_lv double)))
+创建虚拟属性：transform("war_team",x->cast(json_parse(x) as row("id" double,"name" varchar,"level" double,"star" double,"power" double)))
 虚拟属性编辑：依次选择 属性类型【对象组】、关联事件【自动识别】、属性赋值【无值】
-transfrom("war_team",x->cast(json_parse(x) as row(id double,name varchar,level double,star double,power double )))
 
 示例
 territory_list
