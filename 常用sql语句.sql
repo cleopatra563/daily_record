@@ -31,7 +31,7 @@ from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('rol
 创角天数：date_diff('day',date(create_time),date("#event_time"))+1
 开服天数：date_diff('day',date("server_time"),date("#event_time"))+1
 时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
-日期偏移：date(date_add('hour',-13 ,"#event_time")) "part_date"
+日期偏移：date(date_add('hour',-13 ,"#event_time")) "$part_date"
 创角时间：from_unixtime(cast(create_time as bigint) /1000)
 时间转化：cast('2020-11-15 10:30:00.000' as timestamp) date('2022-8-15')  date_format("#event_time","%Y %M %d %H %m %s")
 
