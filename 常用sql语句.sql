@@ -37,6 +37,7 @@ from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('rol
          date('2022-8-15')
          date(last_date)!=date('2022-01-28')
          date_format("#event_time","%Y %M %d %H %m %s")
+         dt >=date_add('day',-6,'2021-08-10') and dt<= '2021-08-10'
 
 
 /*国家信息获取*/
