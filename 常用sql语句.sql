@@ -119,7 +119,7 @@ select "card_detail" ,
     json_extract_scalar(str_json, '$.card_star') as "card_star"
 from (
 select "card_detail",cast("card_detail" as array(json)) raw_data  --card_detail 对象组属性
-from ta.v_event_231
+from ta.v_event_23
 where "$part_event" ='battle_start'
 and ${PartDate:date1}
 )
