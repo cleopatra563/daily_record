@@ -39,6 +39,12 @@ from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('rol
          date_format("#event_time","%Y %M %d %H %m %s")
          dt >=date_add('day',-6,'2021-08-10') and dt<= '2021-08-10'
 
+/*连续登录问题*/
+select openid,login_date,date_add('day',-rownum,login_date) as datediff
+from(
+select openid,date("#event_time") as login_date,row_number() over(partition by openid order by date("#event_time") asc) as rownum
+from ta.v_event_67 where "$part_event" ='login'  and ${PartDate:date} and area_id='1' and vip_level>2
+group by openid,"#event_time")
 
 /*国家信息获取*/
 港台：case when get_ip_location("ip")[2] = '中国' then get_ip_location("ip")[3] else get_ip_location("ip")[2] end
