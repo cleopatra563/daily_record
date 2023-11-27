@@ -30,4 +30,4 @@ IAA小游戏素材（关键字：魔性又休闲）
 百景图：120w 1648w 14
 大东家：150w 2000w 13
 
-case when reason = '打开' then #event_time as
+case when reason = '打开' then #event_time as  "xx"
