@@ -9,6 +9,10 @@
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
 分群筛选：where openid not in (select "#varchar_id" from cluster where cluster_name = '')
 
+/*带汇总行的groupby*/
+group by grouping sets("付费分层",())
+order by case when "付费分层" = '汇总行' then '0' else "付费分层" end
+
 /*滚服账号识别*/
 1、设置首次创角时间标签
 2、添加虚拟属性
