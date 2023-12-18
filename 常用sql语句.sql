@@ -9,6 +9,18 @@
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
 分群筛选：where openid not in (select "#varchar_id" from cluster where cluster_name = '')
 
+/*付费分层打标签*/
+SELECT time,main_server_id,role_id,sum_cash/100 as sum_cash,
+case when sum_cash/100 >2000 then '>2000'
+     when sum_cash/100 >1000 and sum_cash/100<=2000 then '1000-2000'
+     when sum_cash/100 >500 and sum_cash/100<=1000 then '500-1000'
+     when sum_cash/100 >100 and sum_cash/100<=500 then '100-500'
+     when sum_cash/100 >30 and sum_cash/100<=100 then '30-100'
+     when sum_cash/100 <= 30 then '<=30' end as "付费分层"
+FROM ta.v_user_68  where area_id = 106 and sum_cash > 0
+order by sum_cash desc
+
+
 /*带汇总行的groupby*/
 group by grouping sets("付费分层",())
 order by case when "付费分层" = '汇总行' then '0' else "付费分层" end
