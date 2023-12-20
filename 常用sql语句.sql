@@ -25,6 +25,7 @@ from ta.v_event_68 where "$part_event" = 'create_role' and date("#event_time")> 
 where num=1) then '首服'
 else '其他' end
 
+
 /*付费分层打标签*/
 SELECT time,main_server_id,role_id,sum_cash/100 as sum_cash,
 case when sum_cash/100 >2000 then '>2000'
