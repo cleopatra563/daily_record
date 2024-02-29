@@ -8,6 +8,7 @@
 类型转换：cast(cast(3964885446092852 as decimal(20,0)) as varchar)
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
 分群筛选：where openid not in (select "#varchar_id" from cluster where cluster_name = '')
+累计充值：SELECT role_id,payment_money/100 as "单笔充值(元)",sum(payment_money/100) over(partition by role_id order by time) as "累计充值"
 
 /*判断滚服玩家*/
 case when role_id in
