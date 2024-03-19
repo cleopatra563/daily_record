@@ -1,7 +1,7 @@
 /*实用小函数*/
 保留小数：round(13.555,2)
 截取字符串：substring('name',1,3)
-模糊匹配：where role_level_name like "炼气%"
+模糊匹配：role_level_name like "炼气%"
 累计百分比：cume_dist() over(),percent_rank() over()
 两列相除：concat(cast(round((role_fightnum*100/role_num),2) as varchar),'%')；round(cast(pay as double)/id,0) "人均充值"
 输出序号：rank() over(),dense_rank() over(),row_number() over()
@@ -9,6 +9,27 @@
 语法讲解：https://mp.weixin.qq.com/s/D8Rv-E_gSYFhnscVMK1WGg
 分群筛选：where openid not in (select "#varchar_id" from cluster where cluster_name = '')
 累计充值：SELECT role_id,payment_money/100 as "单笔充值(元)",sum(payment_money/100) over(partition by role_id order by time) as "累计充值"
+条件函数：coalesce(try(total_cost/packages),0)
+
+/*数据类型变换*/
+数值变字符串：cast(cast(serverid as integer) as varchar)
+时间转化：date_format("#event_time","%Y %M %d %H %m %s") cast('2020-11-15 10:30:00.000' as timestamp)
+
+
+/*文本格式转时间格式*/
+国内时间：from_unixtime(cast("create_time" as double)/1000)
+日本时间：date_add('hour', 1, from_unixtime(cast("create_time" as double)/1000))
+美国时间：date_add('hour',-13,"#event_time"),date(date_add('hour',-13,from_unixtime(cast(create_time as bigint)/1000 ))) create_date,date(date_add('hour',-13,"#event_time")) as part_date
+创角天数：date_diff('day',date(create_time),date("#event_time"))+1
+开服天数：date_diff('day',date("server_time"),date("#event_time"))+1
+时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
+日期偏移：date(date_add('hour',-13 ,"#event_time")) "$part_date"
+创角时间：from_unixtime(cast(create_time as bigint) /1000)
+时间转化：cast('2020-11-15 10:30:00.000' as timestamp)
+         date('2022-8-15')
+         date(last_date)!=date('2022-01-28')
+         date_format("#event_time","%Y %M %d %H %m %s")
+         dt>=date_add('day',-6,'2021-08-10') and dt<= '2021-08-10'
 
 /*判断滚服玩家*/
 case when role_id in
@@ -56,22 +77,6 @@ case when date_diff('second',ta_tag."tag_20211130_9","#event_time")=0 THEN '首�
 /*性别sql标签*/ 分析主体选：role_id
 select role_id,case when sex = '1' then '男' else '女' end as "性别"
 from(select distinct role_id,sex from ta.v_event_49 where "$part_event" in ('role') and "$part_date">='2022-09-14')
-
-
-/*文本格式转时间格式*/
-国内时间：from_unixtime(cast("create_time" as double)/1000)
-日本时间：date_add('hour', 1, from_unixtime(cast("create_time" as double)/1000))
-美国时间：date_add('hour',-13,"#event_time"),date(date_add('hour',-13,from_unixtime(cast(create_time as bigint)/1000 ))) create_date,date(date_add('hour',-13,"#event_time")) as part_date
-创角天数：date_diff('day',date(create_time),date("#event_time"))+1
-开服天数：date_diff('day',date("server_time"),date("#event_time"))+1
-时区偏移：IF("#event_time" is not null,8) or replace("time_zone",'UTC','')
-日期偏移：date(date_add('hour',-13 ,"#event_time")) "$part_date"
-创角时间：from_unixtime(cast(create_time as bigint) /1000)
-时间转化：cast('2020-11-15 10:30:00.000' as timestamp)
-         date('2022-8-15')
-         date(last_date)!=date('2022-01-28')
-         date_format("#event_time","%Y %M %d %H %m %s")
-         dt>=date_add('day',-6,'2021-08-10') and dt<= '2021-08-10'
 
 /*连续登录问题*/
 select openid,login_date,date_add('day',-rownum,login_date) as datediff
