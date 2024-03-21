@@ -12,9 +12,10 @@
 条件函数：coalesce(try(total_cost/packages),0)
 
 /*数据类型变换*/
-数值变字符串：cast(cast(serverid as integer) as varchar)
+types_contain：double|bigint|varchar|date|timstamp|array|map|json-> function suitable decided
+数值转化：cast(cast(serverid as integer) as varchar)
 时间转化：date_format("#event_time","%Y %M %d %H %m %s") cast('2020-11-15 10:30:00.000' as timestamp)
-
+时间转化：from_unixtime(cast(create_time as bigint)/1000)
 
 /*文本格式转时间格式*/
 国内时间：from_unixtime(cast("create_time" as double)/1000)
