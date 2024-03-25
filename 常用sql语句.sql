@@ -16,6 +16,8 @@ types_contain：double|bigint|varchar|date|timstamp|array|map|json-> function su
 数值转化：cast(cast(serverid as integer) as varchar)
 时间转化：date_format("#event_time","%Y %M %d %H %m %s") cast('2020-11-15 10:30:00.000' as timestamp)
 时间转化：from_unixtime(cast(create_time as bigint)/1000)
+子属性提取：transform(item_gain,x->x."name") as item_name
+子属性筛选：contains_sequence(item_name,array['飞机芯片','高效燃油']) contains(item_name,'小时卡')
 
 /*文本格式转时间格式*/
 国内时间：from_unixtime(cast("create_time" as double)/1000)
@@ -133,7 +135,7 @@ with x as (SELECT a.*,b."tag_value" FROM
     (SELECT distinct "$part_date","#user_id","#account_id","server_id"
     from ta.v_event_31
     where "$part_event"='createrole' and date("$part_date") between date('2021-09-01') and current_date) a
-    LEFT JOIN (SELE0CT "#user_id","tag_value"  FROM user_result_cluster_31 WHERE "cluster_name"='pay_level')b
+    LEFT JOIN (SELECT "#user_id","tag_value"  FROM user_result_cluster_31 WHERE "cluster_name"='pay_level')b
     on a."#user_id" = b."#user_id"
     ),
      y as (SELECT "$part_date","#user_id","#account_id","server_id",count(1) from ta.v_event_31 where "$part_event"='login' and date("$part_date") between date('2020-09-01') and current_date group by "$part_date","#user_id","#account_id","server_id")
