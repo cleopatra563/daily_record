@@ -1,0 +1,3 @@
+file I/O  systerm calls
+string list tuple bytes   built-in sequence:can be indexed and sliced,'+' string:%(somename)03d 'xxx{n}xxx'.format()
+dict getitem()  {'':344,'':456}
