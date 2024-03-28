@@ -5,7 +5,35 @@ print('%(language)s has %(number)03d quote types'%{'language':"Python","number":
 dict getitem()  {'':344,'':456} print()
 more control flow
 
+list(range(10))
+sum(range(10))
+
 a,b = 0,1
 while a <1000:
    print(a)
    a,b = b,a+b
+
+if x<0:
+  x=0
+  print('Negative changed to zero')
+elif x == 0:
+  print('Zeros')
+else:
+  print('More')
+
+activate_users = {}
+for user,status in users.copy().items():
+  if status = 'inactivate':
+    del users[user]
+
+for user,status in users.copy().items():
+   if status == 'activate':
+      activate_users[user] = status
+
+a = ['Mary', 'had', 'a', 'little', 'lamb']
+for i in range(len(a)):
+    print(i,a[i])
+
+# is equal to this
+for i,ele in enumrate(a):
+    print(i,ele)
