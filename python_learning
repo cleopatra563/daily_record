@@ -37,3 +37,50 @@ for i in range(len(a)):
 # is equal to this
 for i,ele in enumrate(a):
     print(i,ele)
+
+# it could be called like this and of course it would print
+lambda x:x+n
+list.pop([i]) list.append(x)
+
+# list comprehensions
+squares = []
+for x in range(10):
+    squares.append(x**2)
+squares
+
+squares = [x**2 for x in range(10)]
+[(x,y) for x in [1,2,3] for y in [3,1,4] if x!=y]
+# which is equal to...
+combs = []
+for x in range(3):
+   for y in [3,1,4]:
+       if x!= y:
+            combs.append((x,y))
+vec = [-4, -2, 0, 2, 4]
+[x*2 for x in vec]  [x for x in vec if x>=0]
+
+# apply a function to all the element
+[func(x) for x in vec] [abs(x) for x in vec]
+
+# call a method on each element
+freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
+[x.strip() for x in freshfruit]
+
+# create a list of 2-tuple
+[(x,x*2) for x in range(6)]
+
+# flatten a list using a listcomp with two 'for'
+vec = [[1,2,3],[4,5,6],[7,8,9]]
+[num for elem in vec for num in elem ]
+
+matrix = [
+...     [1, 2, 3, 4],
+...     [5, 6, 7, 8],
+...     [9, 10, 11, 12],
+... ]
+
+# transpose rows and columns
+[[row[i] for row in matrix] for i in range(4)] # which is equal to
+transposed = []
+for i in range(4)：
+    transpose.append([row[i] for row in matrix])
