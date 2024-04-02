@@ -2,6 +2,7 @@ file I/O  systerm calls
 string、list、tuple、bytes   built-in sequence:can be indexed and sliced
 'xxx{n}xxx'.format()  print('The sum of 1 +2 is {0}').format(1+2)
 print('%(language)s has %(number)03d quote types'%{'language':"Python","number":2})
+f'Results of the {year} {event}'
 dict getitem()  {'':344,'':456} print()
 more control flow
 
@@ -84,3 +85,12 @@ matrix = [
 transposed = []
 for i in range(4)：
     transpose.append([row[i] for row in matrix])
+
+# looping through a dictionaries
+knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+for k,v in knights.items():
+    print(k,v)
+
+# looping through a sequence
+for i,v in enumerate(['tic','tac','toe']):
+    print(i,v)
