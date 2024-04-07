@@ -3,6 +3,7 @@ string、list、tuple、bytes   built-in sequence:can be indexed and sliced
 'xxx{n}xxx'.format()  print('The sum of 1 +2 is {0}').format(1+2)
 print('%(language)s has %(number)03d quote types'%{'language':"Python","number":2})
 f'Results of the {year} {event}'
+f'{variable or literal values}' = '{variable or literal values}'.format()
 dict getitem()  {'':344,'':456} print()
 more control flow
 
