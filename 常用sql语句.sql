@@ -10,6 +10,7 @@
 分群筛选：where openid not in (select "#varchar_id" from cluster where cluster_name = '')
 累计充值：SELECT role_id,payment_money/100 as "单笔充值(元)",sum(payment_money/100) over(partition by role_id order by time) as "累计充值"
 条件函数：coalesce(try(total_cost/packages),0)
+SQL查询：row代表对象组
 
 /*数据类型变换*/
 types_contain：double|bigint|varchar|date|timstamp|array|map|json-> function suitable decided
