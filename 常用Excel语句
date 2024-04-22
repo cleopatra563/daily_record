@@ -1,0 +1,6 @@
+流派判断
+=IF(SUM(F2:K2)=0,"无",OFFSET($F$1,0,MATCH(MAX(F2:K2),F2:K2,0)-1))
+精准查找单元格：offset()
+返回单元格位置：match()
+index()
+if()

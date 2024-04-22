@@ -95,3 +95,5 @@ for k,v in knights.items():
 # looping through a sequence
 for i,v in enumerate(['tic','tac','toe']):
     print(i,v)
+
+i,a[i] for i in range(len(a))
