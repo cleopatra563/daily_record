@@ -96,4 +96,4 @@ for k,v in knights.items():
 for i,v in enumerate(['tic','tac','toe']):
     print(i,v)
 
-i,a[i] for i in range(len(a))
+i,a[i] for i in range(len(a))  [f"role_{}"]

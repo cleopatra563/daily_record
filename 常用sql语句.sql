@@ -19,7 +19,12 @@ types_contain：double|bigint|varchar|date|timstamp|array|map|json-> function su
 时间转化：from_unixtime(cast(create_time as bigint)/1000)
 子属性提取：transform(item_gain,x->x."name") as item_name
 子属性筛选：contains_sequence(item_name,array['飞机芯片','高效燃油']) contains(item_name,'小时卡')
-文本变对象组:cast(json_parse("#app_version") as array(ROW(result ARRAY(VARCHAR), question VARCHAR, question_id Double,content VARCHAR)))
+文本变对象组:
+xxx = '[{"result":["0"],"question":"1、您的性别是（单选题）","question_id":1,"content":"男|女"}]'
+cast(json_parse("xxx") as array(ROW(result ARRAY(VARCHAR), question VARCHAR, question_id Double,content VARCHAR)))
+
+wizard_list='['1','2','3']'
+json_parse("wizard_list")
 
 /*文本格式转时间格式*/
 国内时间：from_unixtime(cast("create_time" as double)/1000)

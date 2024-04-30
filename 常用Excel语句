@@ -4,3 +4,5 @@
 返回单元格位置：match()
 index()
 if()
+
+=OFFSET($B$1,0,MATCH(MAX(B2:F2),B2:F2,0)-1)
