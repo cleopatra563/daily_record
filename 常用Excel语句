@@ -6,3 +6,6 @@ index()
 if()
 
 =OFFSET($B$1,0,MATCH(MAX(B2:F2),B2:F2,0)-1)
+
+数字转文本
+=TEXT(123, "0")
