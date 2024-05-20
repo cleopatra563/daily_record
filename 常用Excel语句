@@ -15,3 +15,6 @@ if()
 激活：只获取到设备id和手机型号，无超级openid和渠道openid
 注册：启动sdk后，可以获取到设备id，超级openid，渠道openid
 ps：小游戏获取不到手机型号
+
+SQL：
+充值第N次对应的购买礼包内容
