@@ -230,3 +230,14 @@ from
 where e.row_num = 1
 group by e.create_date,e."openid@ad_name"
 order by e.create_date,e."openid@ad_name" desc
+
+/*自连接*/
+SELECT a.role_id,date_diff('second',a."#event_time", b."#event_time") AS time_interval
+FROM recharge a
+JOIN recharge b ON a.role_id = b.role_id
+AND a."#event_time" < b."#event_time"
+
+SELECT role_id,
+date_diff('second',"#event_time",lead("#event_time",1,null) OVER (partition by role_id order by "#event_time" )) as "2充间隔",
+date_diff('second',LAG("#event_time", 1, NULL) OVER (PARTITION BY role_id ORDER BY "#event_time"),"#event_time") AS pretime_interval
+FROM recharge
