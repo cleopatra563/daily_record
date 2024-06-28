@@ -5,9 +5,12 @@ index() if() =OFFSET($B$1,0,MATCH(MAX(B2:F2),B2:F2,0)-1)
 数字转文本 =TEXT(123, "0")
 
 魔法棒日志内容验收（数据未入库问题查询，数据传入类型报错导致）
-赤兔日志内容验收
+赤兔日志内容验收（游戏体验）
 冬日穹顶守护者立项案（原型体验、原型分析）
 个人年中总结
 
 用户洞察：兴趣->爱好->渴望->需求
 群体划分：代际|性别|家庭角色|社会角色|场景（什么人做什么事在哪里）
+调研报告：
+https://www.iresearch.com.cn/Detail/report?id=4350&isfree=0
+https://www.iresearch.com.cn/Detail/report?id=4337&isfree=0
