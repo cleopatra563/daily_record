@@ -23,12 +23,6 @@ IFNA(IFS(E2>2000,">2000",E2>1000,"1000-2000",E2>500,"500-1000",E2>100,"100-500"
 用户引导
 目的+时机+方式+内容
 
-
-调研报告：
-https://www.iresearch.com.cn/Detail/report?id=4350&isfree=0
-https://www.iresearch.com.cn/Detail/report?id=4337&isfree=0
-https://indienova.com/indie-game-development/new-understanding-the-design-sense-of-combat/#iah-1
-
 伞兵xx号
 本周
 1、提埋点日志需求
