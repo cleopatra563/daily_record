@@ -34,3 +34,16 @@ for item in obs:
     rec_key = item.keys()
 
 record[rec_key] = value1
+
+
+data = []
+with open("input.txt", "r") as file:
+    lines = file.readlines()
+    for line in lines:
+        data.append(line.strip())
+
+data = open("D:\slave\slave.txt")
+lines = data.readlines()
+list1 = []
+for i in lines:
+    list1.append(i.strip())
