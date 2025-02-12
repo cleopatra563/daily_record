@@ -52,3 +52,26 @@
 栈图是用来追踪变量在哪些地方使用
 符合后进先出原则
 None和字符串'None'并不一样，None有自己独特的类型
+
+画网格图的搭建思路：
+def print_beam():
+   print("+----",end=" ")
+
+def print_beams():
+   do_twice(print_beam)
+   print("+")
+
+def print_post():
+   print("|    ",end=" ")
+
+def print_posts():
+  do_twice(print_post)
+  print("|")
+
+def print_row():
+  print_beams()
+  do_four(print_posts)
+
+def grid():
+  do_twice(print_row)
+  print_beams()
