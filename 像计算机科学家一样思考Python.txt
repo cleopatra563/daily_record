@@ -75,3 +75,6 @@ def print_row():
 def grid():
   do_twice(print_row)
   print_beams()
+
+代码封装、函数泛化
+通用函数
