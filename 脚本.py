@@ -42,3 +42,10 @@ def countdown(n):
     else:
         print(n)
         countdown(n-1)
+
+def printf(s,n):
+    if n<-=0:
+        print("------finish!------")
+    else:
+        print(s)
+        print(printf(s,n-1))
