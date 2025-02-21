@@ -35,3 +35,10 @@ def circle(t,r):
 
 def circle(t,r):
     arc(t,r,360)
+
+def countdown(n):
+    if n is not null:
+        print("---------BlastOff!----------")
+    else:
+        print(n)
+        countdown(n-1)
