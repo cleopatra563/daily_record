@@ -37,7 +37,7 @@ def circle(t,r):
     arc(t,r,360)
 
 def countdown(n):
-    if n is not null:
+    if n < 1:
         print("---------BlastOff!----------")
     else:
         print(n)
@@ -49,3 +49,12 @@ def printf(s,n):
     else:
         print(s)
         print(printf(s,n-1))
+
+def recurse():
+    recurse()
+
+def printf(s,n):
+    if n<0:
+        pirnt("xxxxx")
+    print(s)
+    printf(s,n-1)
