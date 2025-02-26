@@ -55,6 +55,6 @@ def recurse():
 
 def printf(s,n):
     if n<0:
-        pirnt("xxxxx")
+        return
     print(s)
     printf(s,n-1)
